@@ -16,7 +16,7 @@ from collections import Counter
 from nltk.corpus import stopwords
 
 # 엑셀 파일 경로를 로컬 경로로 수정
-df = pd.read_excel('/content/drive/MyDrive/데이터 및 코드/★라벨링_통합본.xlsx')
+df = pd.read_excel('/content/drive/MyDrive/데이터 및 코드/라벨링_통합본.xlsx')
 df = df.sort_values(by='brand')
 df = df[df['brand']=='마루는강쥐']
 print(df.head())  # df 데이터프레임 확인
