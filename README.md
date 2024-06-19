@@ -24,17 +24,17 @@ kobart보다 keybert가 반복적인 내용이 많은 리뷰 특성상, 더욱 �
 ![image](https://github.com/DataScience-Lab-Yonsei/24-1_DSL_Modeling_NLP1_Webtoon_Merchandise_Analysis/assets/155510322/23d697af-db76-4534-a0c7-588c5175fc14)
 
 
-## 2. Background
+## 3. Background
 ![image](https://github.com/DataScience-Lab-Yonsei/24-1_DSL_Modeling_NLP1_Webtoon_Merchandise_Analysis/assets/155510322/d28ac02b-9404-4d09-acaa-019573c2b72a)
 
 
 
-## 3. Dataset
+## 4. Dataset
 ![image](https://github.com/DataScience-Lab-Yonsei/24-1_DSL_Modeling_NLP1_Webtoon_Merchandise_Analysis/assets/155510322/8744c83d-e0df-459e-83eb-baa3d1951eac)
 
 
 
-## 4. Modeling method / experiments
+## 5. Modeling method / experiments
 ![image](https://github.com/DataScience-Lab-Yonsei/24-1_DSL_Modeling_NLP1_Webtoon_Merchandise_Analysis/assets/155510322/bf56aa6d-774c-4ada-be0d-2e4ac1338433)
 ![image](https://github.com/DataScience-Lab-Yonsei/24-1_DSL_Modeling_NLP1_Webtoon_Merchandise_Analysis/assets/155510322/569f4a4f-c247-43e9-840b-4b333e4b40d7)
 ![image](https://github.com/DataScience-Lab-Yonsei/24-1_DSL_Modeling_NLP1_Webtoon_Merchandise_Analysis/assets/155510322/fb50bfad-22b6-490a-b650-24c0f02f6f0a)
@@ -42,7 +42,7 @@ kobart보다 keybert가 반복적인 내용이 많은 리뷰 특성상, 더욱 �
 ![image](https://github.com/DataScience-Lab-Yonsei/24-1_DSL_Modeling_NLP1_Webtoon_Merchandise_Analysis/assets/155510322/77928e7f-88eb-4839-bb9b-bb8633ade115)
 
 
-### 5. Results
+### 6. Results
 ![image](https://github.com/DataScience-Lab-Yonsei/24-1_DSL_Modeling_NLP1_Webtoon_Merchandise_Analysis/assets/155510322/35cad8ae-e2e9-4f03-8697-64e5ae884cd2)
 ![image](https://github.com/DataScience-Lab-Yonsei/24-1_DSL_Modeling_NLP1_Webtoon_Merchandise_Analysis/assets/155510322/ef874185-74e3-461a-a1cb-9ac2c244ac5c)
 ![image](https://github.com/DataScience-Lab-Yonsei/24-1_DSL_Modeling_NLP1_Webtoon_Merchandise_Analysis/assets/155510322/4aee8e9e-b216-4014-9a88-d9f4cc6589e6)
@@ -52,7 +52,7 @@ kobart보다 keybert가 반복적인 내용이 많은 리뷰 특성상, 더욱 �
 
 
 
-### 6. Conclusion
+### 7. Conclusion
 ![image](https://github.com/DataScience-Lab-Yonsei/24-1_DSL_Modeling_NLP1_Webtoon_Merchandise_Analysis/assets/155510322/33b11949-8df5-487d-9ca2-449d0572c7d1)
 
 
