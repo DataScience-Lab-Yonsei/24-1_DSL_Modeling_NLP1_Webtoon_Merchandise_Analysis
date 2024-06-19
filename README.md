@@ -53,6 +53,7 @@ kobart보다 keybert가 반복적인 내용이 많은 리뷰 특성상, 더욱 �
 
 
 ## 7. Conclusion
-![image](https://github.com/DataScience-Lab-Yonsei/24-1_DSL_Modeling_NLP1_Webtoon_Merchandise_Analysis/assets/155510322/33b11949-8df5-487d-9ca2-449d0572c7d1)
+![image](https://github.com/DataScience-Lab-Yonsei/24-1_DSL_Modeling_NLP1_Webtoon_Merchandise_Analysis/assets/155510322/fb83ea52-4682-41cc-87f7-bd39237cf90c)
+
 
 
