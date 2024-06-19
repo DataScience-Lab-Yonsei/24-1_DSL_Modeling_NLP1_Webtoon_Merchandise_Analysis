@@ -1,6 +1,6 @@
 # 패키지 설치 (로컬 환경에서는 주석 처리하고 터미널에서 실행)
-# !pip install soynlp -q
-# !pip install keybert -q
+# pip install soynlp -q
+# pip install keybert -q
 
 from soynlp.word import WordExtractor
 from soynlp import DoublespaceLineCorpus
