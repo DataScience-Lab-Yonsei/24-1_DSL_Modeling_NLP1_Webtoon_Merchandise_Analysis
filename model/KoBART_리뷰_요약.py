@@ -7,33 +7,33 @@ import torch
 from transformers import PreTrainedTokenizerFast, BartForConditionalGeneration
 
 # Load the Excel file
-df = pd.read_excel('path_to_your_excel_file.xlsx')
+df = pd.read_excel('/content/drive/MyDrive/데이터 및 코드/라벨링_통합본.xlsx')
 df = df.sort_values(by='brand')
 
 # Filter for 긍정 (positive) and 부정 (negative) reviews for the product '그립톡 (2종)'
 df1 = df[(df['rating'] == 1) & (df['product_name'] == '그립톡 (2종)')]
 df0 = df[(df['rating'] == 0) & (df['product_name'] == '그립톡 (2종)')]
 
-# Preprocessing function
+# 데이터 전처리 함수
 def preprocess(text):
     text = re.sub(r"[^ ㄱ-ㅣ가-힣A-Za-z0-9]", " ", text)
     text = re.sub(r"([ㄱ-ㅎㅏ-ㅣ]+)", " ", text)
     text = re.sub(r"[a-z]([A-Z])", r"-\1", text).upper()
     return text
 
-# Apply preprocessing
+# 데이터 전처리 함수 적용
 df1["filtered_data"] = df1['review'].apply(preprocess)
 df0["filtered_data"] = df0['review'].apply(preprocess)
 
-# Join the reviews into a single string
+# 리뷰를 하나의 문자열로 결합
 review1 = " ".join(df1['filtered_data'].tolist())
 review0 = " ".join(df0['filtered_data'].tolist())
 
-# Initialize tokenizer and model
+# 토큰화 및 모델 초기화
 tokenizer = PreTrainedTokenizerFast.from_pretrained('digit82/kobart-summarization')
 model = BartForConditionalGeneration.from_pretrained('digit82/kobart-summarization')
 
-# Function to summarize text
+# 텍스트 요약 함수
 def summarize(text):
     raw_input_ids = tokenizer.encode(text)
     max_input_length = 512
@@ -48,14 +48,14 @@ def summarize(text):
 
     return " ".join(summary_texts)
 
-# Summarize reviews
+# 긍부정 리뷰 요약
 final_summary_1 = summarize(review1)
 final_summary_0 = summarize(review0)
 
-# Print summary lengths and summaries
+# 리뷰 길이 및 요약 길이 출력
 print("긍정 리뷰 길이: ", len(review1))
-print("부정 리뷰 길이: ", len(review0))
 print("긍정 리뷰 요약 길이: ", len(final_summary_1))
+print("부정 리뷰 길이: ", len(review0))
 print("부정 리뷰 요약 길이: ", len(final_summary_0))
 
 print("긍정 리뷰 요약: ", final_summary_1)
