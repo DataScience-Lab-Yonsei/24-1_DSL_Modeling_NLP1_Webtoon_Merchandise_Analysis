@@ -27,15 +27,15 @@ train_nya, test_nya = train_test_split(nya_df, test_size=0.2, random_state=42)
 print("Train Reviews : ", len(train_nya))
 print("Test_Reviews : ", len(test_nya))
 
-# Save train and test datasets to .tsv files
+# train 및 test 데이터셋을 .tsv files로 저장
 train_nya.to_csv("train_review.tsv", sep='\t', index=False)
 test_nya.to_csv("test_review.tsv", sep='\t', index=False)
 
-# Load the datasets
+# 데이터셋 로드
 dataset_train = nlp.data.TSVDataset("train_review.tsv", num_discard_samples=1)
 dataset_test = nlp.data.TSVDataset("test_review.tsv", num_discard_samples=1)
 
-# Initialize tokenizer and model
+# 토큰나이저 및 모델 초기화 
 tokenizer = KoBERTTokenizer.from_pretrained('skt/kobert-base-v1')
 bertmodel = BertModel.from_pretrained('skt/kobert-base-v1', return_dict=False)
 vocab = nlp.vocab.BERTVocab.from_sentencepiece(tokenizer.vocab_file, padding_token='[PAD]')
@@ -54,7 +54,7 @@ class BERTDataset(Dataset):
     def __len__(self):
         return len(self.labels)
 
-# Setting parameters
+# 파라미터 설정
 max_len = 64
 batch_size = 64
 warmup_ratio = 0.1
@@ -63,7 +63,7 @@ max_grad_norm = 1
 log_interval = 200
 learning_rate =  5e-5
 
-# Create DataLoader
+# DataLoader 생성
 data_train = BERTDataset(dataset_train, 2, 1, tokenizer.tokenize, vocab, max_len, True, False)
 data_test = BERTDataset(dataset_test, 2, 1, tokenizer.tokenize, vocab, max_len, True, False)
 
@@ -94,7 +94,7 @@ class BERTClassifier(nn.Module):
             out = self.dropout(pooler)
         return self.classifier(out)
 
-# Initialize model, optimizer, and loss function
+#  model, optimizer, loss function 초기화
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 model = BERTClassifier(bertmodel, dr_rate=0.5).to(device)
 
@@ -111,13 +111,13 @@ t_total = len(train_dataloader) * num_epochs
 warmup_step = int(t_total * warmup_ratio)
 scheduler = get_cosine_schedule_with_warmup(optimizer, num_warmup_steps=warmup_step, num_training_steps=t_total)
 
-# Function to calculate accuracy
+# 정확도 계산 함수 
 def calc_accuracy(X, Y):
     max_vals, max_indices = torch.max(X, 1)
     train_acc = (max_indices == Y).sum().data.cpu().numpy()/max_indices.size()[0]
     return train_acc
 
-# Training and evaluation loop
+# Training 및 evaluation loop
 for e in range(num_epochs):
     train_acc = 0.0
     test_acc = 0.0
@@ -139,7 +139,7 @@ for e in range(num_epochs):
             print(f"epoch {e+1} batch id {batch_id+1} loss {loss.data.cpu().numpy()} train acc {train_acc / (batch_id+1)}")
     print(f"epoch {e+1} train acc {train_acc / (batch_id+1)}")
 
-    # Evaluation
+    # 평가
     model.eval()
     all_probabilities = []
 
@@ -156,7 +156,7 @@ for e in range(num_epochs):
         test_acc += calc_accuracy(out, label)
     print(f"epoch {e+1} test acc {test_acc / (batch_id+1)}")
 
-# Function to evaluate the model
+# 모델 평가 함수
 def evaluate(model, dataloader, device):
     model.eval()
     predictions, true_labels = [], []
@@ -184,7 +184,7 @@ def evaluate(model, dataloader, device):
         "classification_report": cls_report
     }
 
-# Evaluate the model
+# 모델 평가
 evaluation_metrics = evaluate(model, test_dataloader, device)
 print(f"Accuracy: {evaluation_metrics['accuracy']:.4f}")
 print(f"Precision: {evaluation_metrics['precision']:.4f}")
